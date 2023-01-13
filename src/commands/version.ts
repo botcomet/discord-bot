@@ -1,9 +1,9 @@
 import {
   SlashCommandBuilder,
-  CommandInteraction,
-  EmbedBuilder
+  CommandInteraction
 } from "discord.js";
 import { readFileSync } from "fs";
+import createEmbed from "../config/embeds";
 
 const packageJson = JSON.parse(
   readFileSync("./package.json", "utf-8")
@@ -18,13 +18,10 @@ export default {
   async execute(interaction: CommandInteraction) {
     await interaction.reply({
       embeds: [
-        new EmbedBuilder()
+        createEmbed()
           .setTitle(`BotComet v${packageJson.version}`)
           .setColor("#555555")
           .setTimestamp()
-          .setFooter({
-            text: `BotComet ${process.env.BETA ? "Beta" : "Stable"}`
-          })
       ]
     });
   }

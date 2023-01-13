@@ -4,7 +4,7 @@ import {
 } from "discord.js";
 import * as fs from "fs";
 import { config } from "dotenv";
-import { SlashCommand } from "./commands/types";
+import { SlashCommand } from "./commands/_types";
 
 config();
 

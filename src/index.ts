@@ -6,7 +6,7 @@ import {
 import { config } from "dotenv";
 import { readdirSync } from "fs";
 import { join } from "path";
-import type { SlashCommand } from "./commands/types";
+import type { SlashCommand } from "./commands/_types";
 
 const __dirname = "./dist";
 
@@ -38,7 +38,7 @@ const client: BotCometClient = new BotCometClient({
 async function registerCommands() {
   const commandFiles = readdirSync(
     join(__dirname, "commands")
-  ).filter((file) => file.endsWith(".js") && !(file === "types.js"));
+  ).filter((file) => file.endsWith(".js") && !(file[0] === "_"));
 
   for (const file of commandFiles) {
     const command: SlashCommand = await import(
